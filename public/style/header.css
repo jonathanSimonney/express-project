@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+}
+
+header{
+    background-color: var(--main-bg-color);
+    color: var(--main-color);
+    width: 100vw;
+    height: 10vh;
+}
+
+.innerGrid{
+    width: 90vw;
+    height: 90%;
+    display: grid;
+    margin: auto;
+    grid-template-columns: 200px auto 200px;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+            "title . button"
+            "subline . .";
+}
+
+.innerGrid h1{
+    grid-area: title;
+}
+
+.innerGrid .subline{
+    grid-area: subline;
+}
+
+.innerGrid .admin{
+    grid-area: button;
+    background-color: var(--main-color);
+    color: var(--main-bg-color);
+}
