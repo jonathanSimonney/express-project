@@ -1,21 +1,13 @@
-link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous")
-link(rel="stylesheet" href="/style/variables.css")
-link(rel="stylesheet" href="/style/header.css")
-link(rel="stylesheet" href="/style/common.css")
-link(rel="stylesheet" href="/style/index.css")
+extends layout.pug
 
-include mixin/article.pug
+block head
+    link(rel="stylesheet" href="/style/index.css")
+    include mixin/article.pug
 
-header
-  div.innerGrid
-      h1 3615 MyBlog
-      span.subline Node.js is cool!
-      a(href="#").admin
-          i.fas.fa-cog
-          |Administration
-main.flex-column.flex
-  h3 Bienvenue sur mon blog
-  span voici la liste des derniers articles du blog :
-  div.articleList
-      each number in [1, 2, 3]
-          + article(number)
+
+block content
+    h3 Bienvenue sur mon blog
+    span voici la liste des derniers articles du blog :
+    div.articleList
+        each number in [1, 2, 3]
+            + article(number)
