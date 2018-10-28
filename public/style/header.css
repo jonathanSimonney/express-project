@@ -6,7 +6,7 @@ header{
     background-color: var(--main-bg-color);
     color: var(--main-color);
     width: 100vw;
-    height: 10vh;
+    height: 100px;
 }
 
 .innerGrid{
@@ -15,14 +15,18 @@ header{
     display: grid;
     margin: auto;
     grid-template-columns: 200px auto 200px;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: 10px 40px 20px 20px auto;
     grid-template-areas:
+            ". . ."
             "title . button"
-            "subline . .";
+            ". . ."
+            "subline . ."
+            ". . .";
 }
 
 .innerGrid h1{
     grid-area: title;
+    margin: 0;
 }
 
 .innerGrid .subline{
