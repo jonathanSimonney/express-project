@@ -1,0 +1,13 @@
+article{
+    background-color: var(--light-bg-color);
+    padding: 25px;
+    margin-bottom: 10px;
+}
+
+article a{
+    color: var(--main-color);
+}
+
+.publicationDate{
+    color: var(--category-color);
+}

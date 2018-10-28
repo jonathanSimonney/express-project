@@ -1,0 +1,14 @@
+mixin article(number)
+  article.flex.flex-column
+    a(href="#")
+      h3 Titre #{number}
+    span
+      |Lorem ipsum #{number}...
+      a(href="#") Lire la suite
+    div.flex.flex-row
+      span.publicationDate
+        i.fas.fa-calendar-alt
+        |Publié le date #{number} par auteur #{number}
+      span.category
+        i.fas.fa-tag
+        |Catégorie #{number}
