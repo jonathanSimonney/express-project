@@ -1,2 +1,10 @@
-h1 edit
-p paragraphe
+extends ../layout.pug
+
+block head
+    include ../mixin/article.pug
+    link(rel="stylesheet" href="/style/admin.css")
+
+block content
+    - var categories = [1, 2, 3]
+    - var authors = [1, 2, 3]
+    + articleForm(categories, authors, 1)

@@ -28,3 +28,49 @@ mixin rowArticle(number)
             a.red(href="#")
                 i.fas.fa-trash-alt
                 | Supprimer
+
+mixin articleForm(categories, authors, number=false)
+    a(href="#")
+        i.fas.fa-arrow-left
+        | Retour à l'espace d'administration'
+    if number === false
+        h3 Ecrire un nouvel article
+        p Renseigner le formulaire suivant pour ajouter un nouvel article :
+        span Ajout d'un article :
+    else
+        h3 Modifier l'article numéro #{number}
+        span Modification d'un article :
+    form(action="#")
+        div.flex.flex-column.flex-around
+            div
+                label(for="title") Titre :
+                if number === false
+                    input#title(type="text" placeholder="titre de votre article ...")
+                else
+                    input#title(type="text" placeholder="titre de votre article ..." value="titre de l'article " + number)
+            div
+                label(for="category") Catégorie :
+                select#category
+                    each category in categories
+                        if category === number
+                            option(value=category selected) catégorie #{category}
+                        else
+                            option(value=category) catégorie #{category}
+            div
+                label(for="content") Contenu :
+                if number === false
+                    input#content(type="textarea" placeholder="contenu de votre article ...")
+                else
+                    input#content(type="textarea" placeholder="contenu de votre article ..." value="contenu de l'article " + number)
+            div
+                label(for="author") Auteur :
+                select#author
+                    each author in authors
+                        if author === number
+                            option(value=author selected) auteur #{author}
+                        else
+                            option(value=author) auteur #{author}
+            if number === false
+                input.button(type="submit" value="Publier")
+            else
+                input.button(type="submit" value="Modifier l'article")

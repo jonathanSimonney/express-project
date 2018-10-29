@@ -23,6 +23,10 @@ a{
     justify-content: space-between;
 }
 
+.flex-around{
+    justify-content: space-around;
+}
+
 .category{
     background-color: var(--category-color);
     padding: 5px;

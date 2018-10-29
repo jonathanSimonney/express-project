@@ -14,3 +14,22 @@ table, th, td{
     margin: auto;
     border: 1px solid var(--main-bg-color);
 }
+
+form {
+    border: 1px solid black;
+}
+
+form>div{
+    width: 80%;
+    margin: auto;
+    height: 350px;
+}
+
+form input[type="textarea"]{
+    width: 70%;
+    height: 200px;
+}
+
+form input[type="submit"]{
+    margin: 0 auto;
+}
