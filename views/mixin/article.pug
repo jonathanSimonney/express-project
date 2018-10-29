@@ -12,3 +12,19 @@ mixin article(number)
             span.category
                 i.fas.fa-tag
                 |Catégorie #{number}
+
+mixin rowArticle(number)
+    tr
+        td #{number}
+        td date #{number} à horaire #{number}
+        td
+            a(href="#") titre #{number}
+        td auteur #{number}
+        td catégorie #{number}
+        td
+            a(href="#")
+                i.fas.fa-pen
+                | Modifier
+            a.red(href="#")
+                i.fas.fa-trash-alt
+                | Supprimer

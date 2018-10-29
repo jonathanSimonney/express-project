@@ -1,0 +1,16 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th{
+    height: 30px;
+    color: var(--main-bg-color);
+    background-color: var(--main-color);
+}
+
+table, th, td{
+    text-align: center;
+    margin: auto;
+    border: 1px solid var(--main-bg-color);
+}

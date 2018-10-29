@@ -35,6 +35,4 @@ header{
 
 .innerGrid .admin{
     grid-area: button;
-    background-color: var(--main-color);
-    color: var(--main-bg-color);
 }

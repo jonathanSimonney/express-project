@@ -3,6 +3,10 @@ main{
     margin: 40px auto;
 }
 
+a{
+    color: var(--main-color);
+}
+
 .flex{
     display: flex;
 }
@@ -15,13 +19,29 @@ main{
     flex-direction: column;
 }
 
+.flex-between{
+    justify-content: space-between;
+}
+
 .category{
     background-color: var(--category-color);
     padding: 5px;
-    height: 20px;
+    height: var(--button-height);
     margin: auto 5px;
 }
 
 .italic{
     font-style: italic;
+}
+
+.red{
+    color: red;
+}
+
+.button{
+    background-color: var(--main-color);
+    color: var(--main-bg-color);
+    height: var(--button-height);
+    padding: 5px;
+    margin: auto 5px;
 }

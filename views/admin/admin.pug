@@ -1,2 +1,31 @@
-h1 admin index
-p paragraphe
+extends ../layout.pug
+
+block head
+    include ../mixin/article.pug
+    link(rel="stylesheet" href="/style/admin.css")
+
+block content
+    div.flex.flex-row.flex-between
+        h3 Bienvenue dans l'espace d'administration
+        a.button(href="#")
+            i.fas.fa-plus
+            | Publier un nouvel article
+    p Cet espace vous permet de gérer et administrer les articles présents sur votre blog !
+    table
+        tr
+            th #
+            th
+                i.fas.fa-calendar-alt
+                | Date de publication
+            th Titre
+            th
+                i.fas.fa-user
+                | Auteur
+            th
+                i.fas.fa-tag
+                | Catégorie
+            th
+                i.fas.fa-cogs
+                | Action
+        each number in [1, 2, 3]
+            + rowArticle(number)
