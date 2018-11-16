@@ -1,18 +1,23 @@
 require('dotenv').config()
 
+//a few const useful
 const express = require('express')
 const app = express()
 const PORT = 3000
 const HOST = 'localhost'
 const mongoose = require('mongoose');
 
+//routers const
 const adminRouter = require('./admin.router.js')
 const blogRouter = require('./blog.router.js')
 
+//app config (templating, assets directory, using of foredeclared routers, etc.
 app.set('view engine', 'pug')
 app.use(express.static('public'))
 app.use('/', blogRouter)
 app.use('/admin', adminRouter)
+//because moment is useful to convert date to string in pug template.
+app.locals.moment = require('moment');
 
 const connectionString = `mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`
 

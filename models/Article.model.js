@@ -31,3 +31,9 @@ const articleSchema = new Schema({
         ref : 'Author'
     },
 });
+
+//we need it because these models are included in the article
+require('./Author.model')
+require('./Category.model')
+
+module.exports = mongoose.model('Article', articleSchema);

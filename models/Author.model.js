@@ -12,3 +12,5 @@ const authorSchema = new Schema({
         'required': true
     },
 });
+
+module.exports = mongoose.model('Author', authorSchema);

@@ -9,5 +9,5 @@ block content
     h3 Bienvenue sur mon blog
     span voici la liste des derniers articles du blog :
     div.articleList
-        each number in [1, 2, 3]
-            + article(number)
+        each article in articles
+            + article(article)
