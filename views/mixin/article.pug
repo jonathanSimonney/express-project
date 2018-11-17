@@ -1,10 +1,10 @@
 mixin article(article)
     article.flex.flex-column
-        a(href="#")
+        a(href=`article/${article.id}`)
             h3 Titre #{article.title}
         span
             |#{article.content.substr(1, 50)}...
-            a(href="article/#{article.id}") Lire la suite
+            a(href=`article/${article.id}`) Lire la suite
         div.flex.flex-row
             span.publicationDate
                 i.fas.fa-calendar-alt
