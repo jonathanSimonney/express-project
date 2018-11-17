@@ -4,17 +4,16 @@ block head
     //link(rel="stylesheet" href="/style/common.css")
 
 block content
-    a(href="#")
+    a(href="/")
         i.fas.fa-arrow-left
         |Retour à la liste des articles
     div.flex.flex-row
-        h4 Séance de yoga
+        h4 #{article.title}
         span.category
             i.fas.fa-tag
-            | Peinture
+            | #{article.category.title}
     p
-        |Publié le 16/08/2017 par&nbsp;
-        i Paul Verlaine
+        |Publié le #{moment(article.date).format("YYYY/MM/DD [à] h:mm")} par!{' '}
+        i #{article.author.name}
     div.italic
-        p L'extrait standard de Lorem Ipsum blah blah blah
-        p encore du texte balh blah blah
+        p #{article.content}

@@ -7,6 +7,11 @@ blogRouter.get('/', (req, res) => {
         res.render('index', { articles })
     }).catch(error => res.send(error.message))
 })
-blogRouter.get('/article/:id', (req, res) => res.render('article.pug'))
+blogRouter.get('/article/:id', (req, res) => {
+	Article.findById(req.params.id).populate('author category').exec().then(article => {
+		console.log(article)
+		res.render('article', { article })
+	}).catch(error => res.send(error.message))
+})
 
 module.exports = blogRouter
