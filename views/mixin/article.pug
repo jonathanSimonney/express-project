@@ -8,24 +8,25 @@ mixin article(article)
         div.flex.flex-row
             span.publicationDate
                 i.fas.fa-calendar-alt
-                |Publié le #{moment(article.date).format("YYYY/MM/DD [à] h:mm")} par #{article.author.name}
+                |Publié le #{moment(article.date).format("DD/MM/YYYY, h:mm:ss A")} par!{' '}
+                i #{article.author.name}
             span.category
                 i.fas.fa-tag
                 |#{article.category.title}
 
-mixin rowArticle(number)
+mixin rowArticle(article)
     tr
-        td #{number}
-        td date #{number} à horaire #{number}
+        td #{article.id}
+        td #{moment(article.date).format("DD/MM/YYYY, h:mm:ss A")}
         td
-            a(href="#") titre #{number}
-        td auteur #{number}
-        td catégorie #{number}
+            a(href=`/article/${article.id}`) #{article.title}
+        td #{article.author.name}
+        td #{article.category.title}
         td
-            a(href="#")
+            a(href=`/admin/edit/${article.id}`)
                 i.fas.fa-pen
                 | Modifier
-            a.red(href="#")
+            a.red(href=`/admin/delete/${article.id}`)
                 i.fas.fa-trash-alt
                 | Supprimer
 

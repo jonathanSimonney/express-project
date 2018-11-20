@@ -27,5 +27,5 @@ block content
             th
                 i.fas.fa-cogs
                 | Action
-        each number in [1, 2, 3]
-            + rowArticle(number)
+        each article in articles
+            + rowArticle(article)

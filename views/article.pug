@@ -8,12 +8,12 @@ block content
         i.fas.fa-arrow-left
         |Retour à la liste des articles
     div.flex.flex-row
-        h4 #{article.title}
+        h2 #{article.title}
         span.category
             i.fas.fa-tag
             | #{article.category.title}
     p
-        |Publié le #{moment(article.date).format("YYYY/MM/DD [à] h:mm")} par!{' '}
-        i #{article.author.name}
+        b Publié le #{moment(article.date).format("DD/MM/YYYY [à] h:mm")} par!{' '}
+          i #{article.author.name}
     div.italic
         p #{article.content}
