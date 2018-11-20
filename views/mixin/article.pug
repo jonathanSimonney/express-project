@@ -54,9 +54,9 @@ mixin articleForm(categories, authors, number=false)
                 select#category
                     each category in categories
                         if category === number
-                            option(value=category selected) catégorie #{category}
+                            option(value=category.id selected) #{category.title}
                         else
-                            option(value=category) catégorie #{category}
+                            option(value=category.id) #{category.title}
             div
                 label(for="content") Contenu :
                 if number === false
@@ -68,9 +68,9 @@ mixin articleForm(categories, authors, number=false)
                 select#author
                     each author in authors
                         if author === number
-                            option(value=author selected) auteur #{author}
+                            option(value=author.id selected) #{author.name}
                         else
-                            option(value=author) auteur #{author}
+                            option(value=author.id) #{author.name}
             if number === false
                 input.button(type="submit" value="Publier")
             else

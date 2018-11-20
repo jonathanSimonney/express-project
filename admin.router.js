@@ -1,5 +1,7 @@
 const express = require('express')
 const adminRouter = express.Router()
+const Category = require('./models/Category.model')
+const Author = require('./models/Author.model')
 const Article = require('./models/Article.model')
 
 adminRouter.get('/', (req, res) => {
@@ -7,8 +9,24 @@ adminRouter.get('/', (req, res) => {
 		res.render('admin/admin.pug', { articles })
 	}).catch(error => res.send(error.message))
 })
-adminRouter.get('/write', (req, res) => res.render('admin/write.pug'))
-adminRouter.get('/edit/:id', (req, res) => res.render('admin/edit.pug'))
+adminRouter.get('/write', (req, res) => {
+	Promise
+		.all([
+			Author.find().sort('name'),
+			Category.find().sort('title')
+		])
+		.then(([authors, categories]) => res.render('admin/write', { authors, categories }))
+		.catch(error => res.send(error.message))
+})
+adminRouter.get('/edit/:id', (req, res) => {
+	Promise
+		.all([
+			Author.find().sort('name'),
+			Category.find().sort('title')
+		])
+		.then(([authors, categories]) => res.render('admin/edit', { authors, categories }))
+		.catch(error => res.send(error.message))
+})
 adminRouter.get('/delete/:id', (req, res) => {
     //todo
 })
