@@ -41,17 +41,17 @@ mixin articleForm(categories, authors, number=false)
     else
         h3 Modifier l'article numéro #{number}
         span Modification d'un article :
-    form(action="#")
+    form(action="" method="post")
         div.flex.flex-column.flex-around
             div
                 label(for="title") Titre :
                 if number === false
-                    input#title(type="text" placeholder="titre de votre article ...")
+                    input#title(type="text" name="title" placeholder="titre de votre article ...")
                 else
-                    input#title(type="text" placeholder="titre de votre article ..." value="titre de l'article " + number)
+                    input#title(type="text" name="title" placeholder="titre de votre article ..." value="titre de l'article " + number)
             div
                 label(for="category") Catégorie :
-                select#category
+                select#category(name="category")
                     each category in categories
                         if category === number
                             option(value=category.id selected) #{category.title}
@@ -60,12 +60,12 @@ mixin articleForm(categories, authors, number=false)
             div
                 label(for="content") Contenu :
                 if number === false
-                    input#content(type="textarea" placeholder="contenu de votre article ...")
+                    input#content(type="textarea" name="content" placeholder="contenu de votre article ...")
                 else
-                    input#content(type="textarea" placeholder="contenu de votre article ..." value="contenu de l'article " + number)
+                    input#content(type="textarea" name="content" placeholder="contenu de votre article ..." value="contenu de l'article " + number)
             div
                 label(for="author") Auteur :
-                select#author
+                select#author(name="author")
                     each author in authors
                         if author === number
                             option(value=author.id selected) #{author.name}
