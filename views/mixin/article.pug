@@ -30,16 +30,16 @@ mixin rowArticle(article)
                 i.fas.fa-trash-alt
                 | Supprimer
 
-mixin articleForm(categories, authors, displayErrorMessage, number=false)
+mixin articleForm(categories, authors, displayErrorMessage, article=false)
     a(href="/admin")
         i.fas.fa-arrow-left
         | Retour à l'espace d'administration
-    if number === false
+    if article === false
         h3 Ecrire un nouvel article
         p Renseigner le formulaire suivant pour ajouter un nouvel article :
         span Ajout d'un article :
     else
-        h3 Modifier l'article numéro #{number}
+        h3 Modifier l'article #{article.title}
         span Modification d'un article :
     form(action="" method="post")
         div.flex.flex-column.flex-around
@@ -48,33 +48,33 @@ mixin articleForm(categories, authors, displayErrorMessage, number=false)
                     p An error occured! Please fill in all the fields in the form.
             div
                 label(for="title") Titre :
-                if number === false
+                if article === false
                     input#title(type="text" name="title" placeholder="titre de votre article ...")
                 else
-                    input#title(type="text" name="title" placeholder="titre de votre article ..." value="titre de l'article " + number)
+                    input#title(type="text" name="title" placeholder="titre de votre article ..." value=`${article.title}`)
             div
                 label(for="category") Catégorie :
                 select#category(name="category")
                     each category in categories
-                        if category === number
+                        if article !== false && category.id === article.category.id
                             option(value=category.id selected) #{category.title}
                         else
                             option(value=category.id) #{category.title}
             div
                 label(for="content") Contenu :
-                if number === false
+                if article === false
                     input#content(type="textarea" name="content" placeholder="contenu de votre article ...")
                 else
-                    input#content(type="textarea" name="content" placeholder="contenu de votre article ..." value="contenu de l'article " + number)
+                    input#content(type="textarea" name="content" placeholder="contenu de votre article ..." value=`${article.content}`)
             div
                 label(for="author") Auteur :
                 select#author(name="author")
                     each author in authors
-                        if author === number
+                        if article !== false && author.id === article.author.id
                             option(value=author.id selected) #{author.name}
                         else
                             option(value=author.id) #{author.name}
-            if number === false
+            if article === false
                 input.button(type="submit" value="Publier")
             else
                 input.button(type="submit" value="Modifier l'article")
