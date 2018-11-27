@@ -38,6 +38,18 @@ adminRouter.post('/write', (req, res) => {
 	);
 });
 
+adminRouter.post('/edit/:id', (req, res) => {
+	currentSession = req.session
+	Article.findByIdAndUpdate(req.params.id, req.body).then(
+		() => res.redirect(req.baseUrl + '/')
+	).catch(
+		(err) => {
+			currentSession.valid = false;
+			res.redirect(req.baseUrl + '/edit/' + req.params.id)
+		}
+	);
+});
+
 adminRouter.get('/edit/:id', (req, res) => {
 	currentSession = req.session
 	let displayErrorMessage = currentSession.valid === false;
