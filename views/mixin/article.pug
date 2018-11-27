@@ -30,7 +30,7 @@ mixin rowArticle(article)
                 i.fas.fa-trash-alt
                 | Supprimer
 
-mixin articleForm(categories, authors, number=false)
+mixin articleForm(categories, authors, displayErrorMessage, number=false)
     a(href="/admin")
         i.fas.fa-arrow-left
         | Retour à l'espace d'administration
@@ -43,6 +43,9 @@ mixin articleForm(categories, authors, number=false)
         span Modification d'un article :
     form(action="" method="post")
         div.flex.flex-column.flex-around
+            if displayErrorMessage
+                div.red
+                    p An error occured! Please fill in all the fields in the form.
             div
                 label(for="title") Titre :
                 if number === false

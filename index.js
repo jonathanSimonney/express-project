@@ -6,6 +6,7 @@ const app = express();
 const PORT = 3000;
 const HOST = 'localhost';
 const mongoose = require('mongoose');
+let session = require('express-session');
 
 //body-parser is necessary to check forms input
 const bodyParser = require('body-parser');
@@ -17,6 +18,7 @@ const blogRouter = require('./blog.router.js');
 //app config (templating, assets directory, using of foredeclared routers, etc.
 app.set('view engine', 'pug');
 app.use(express.static('public'));
+app.use(session({secret:`${process.env.SESSION_SECRET}`}));
 
 app.use(bodyParser.urlencoded({extended: false}));//use body-parser before setting the routers
 app.use('/', blogRouter);
