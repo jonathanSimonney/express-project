@@ -40,7 +40,7 @@ adminRouter.post('/write', (req, res) => {
 
 adminRouter.post('/edit/:id', (req, res) => {
 	currentSession = req.session
-	Article.findByIdAndUpdate(req.params.id, req.body).then(
+	Article.findByIdAndUpdate(req.params.id, req.body, {runValidators: true}).then(//validate against the schema.
 		() => res.redirect(req.baseUrl + '/')
 	).catch(
 		(err) => {
