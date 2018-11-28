@@ -76,7 +76,22 @@ adminRouter.get('/edit/:id', (req, res) => {
 	}).catch(error => res.send(error.message))
 });
 adminRouter.get('/delete/:id', (req, res) => {
-    //todo
+	Article.findByIdAndDelete(req.params.id).then(
+		(param) => {
+			if (param == null){//the article wasn't suppressed
+				res.status(404)
+				const resourceName = "article"
+				const resourceId = "id " + req.params.id
+				res.render('errors/404', {resourceName, resourceId})
+			}else{
+				res.redirect(req.baseUrl + '/')
+			}
+		}
+	).catch(
+		(err) => {
+			res.send(err.message)
+		}
+	);
 });
 
 
