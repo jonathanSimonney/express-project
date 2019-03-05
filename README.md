@@ -1,3 +1,7 @@
+# what it is
+
+This project is an extremely simple blog powered by express.
+
 # installation
 run 
 ```
